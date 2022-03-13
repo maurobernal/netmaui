@@ -1,0 +1,134 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RepasoControlesBasicos.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ScrollView>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"  />
+                <ColumnDefinition Width="120"  />
+                <ColumnDefinition Width="120"  />
+            </Grid.ColumnDefinitions>
+
+            <BoxView BackgroundColor="Red"    Grid.Column="0" Grid.Row="0"   />
+            <BoxView BackgroundColor="Orange" Grid.Column="1" Grid.Row="0"   />
+            <BoxView BackgroundColor="Yellow" Grid.Column="2" Grid.Row="0"   />
+
+            <BoxView BackgroundColor="Blue"    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"   />
+          
+
+            <BoxView BackgroundColor="Green"    Grid.Column="0" Grid.Row="2"   />
+            <BoxView BackgroundColor="GreenYellow" Grid.Column="1" Grid.Row="2"   />
+            <BoxView BackgroundColor="LightGreen" Grid.Column="2" Grid.Row="2"   />
+
+            <BoxView BackgroundColor="Brown"    Grid.Column="0" Grid.Row="3"   />
+            <BoxView BackgroundColor="RosyBrown" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"    />
+            <BoxView BackgroundColor="SaddleBrown" Grid.Column="2" Grid.Row="3"   />
+
+            <BoxView BackgroundColor="Black"    Grid.Column="0" Grid.Row="4"   />
+            
+            <BoxView BackgroundColor="LightGray" Grid.Column="2" Grid.Row="4"   />
+
+
+            <Label Text="Fila 0 Col 1" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 0 Col 2" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 0 Col 3" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+
+            <Label Text="Fila 1 Col 1" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 1 Col 2" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 1 Col 3" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+                                                                 
+            <Label Text="Fila 2 Col 1" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 2 Col 2" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 2 Col 3" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+                                                                 
+            <Label Text="Fila 3 Col 1" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 3 Col 2" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 3 Col 3" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+                                                                 
+            <Label Text="Fila 4 Col 1" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 4 Col 2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+            <Label Text="Fila 4 Col 3" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="DarkBlue" TextColor="White" />
+                                                                 
+          
+        </Grid>
+        
+        <!--
+         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label0" Grid.Column="0" Grid.Row="0" Text="col 0- fila 0" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label1" Grid.Column="0" Grid.Row="1" Text="col 0- fila 1" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label2" Grid.Column="0" Grid.Row="2" Text="col 0- fila 2" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label3" Grid.Column="0" Grid.Row="3" Text="col 0- fila 3" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label4" Grid.Column="0" Grid.Row="4" Text="col 0- fila 4" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label5" Grid.Column="1" Grid.Row="0" Text="col 1- fila 0" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label6" Grid.Column="1" Grid.Row="1" Text="col 1- fila 1" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label7" Grid.Column="1" Grid.Row="2" Text="col 1- fila 2" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label8" Grid.Column="1" Grid.Row="3" Text="col 1- fila 3" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label9" Grid.Column="1" Grid.Row="4" Text="col 1- fila 4" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label10" Grid.Column="2" Grid.Row="0" Text="col 2- fila 0" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label11" Grid.Column="2" Grid.Row="1" Text="col 2- fila 1" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label12" Grid.Column="2" Grid.Row="2" Text="col 2- fila 2" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label13" Grid.Column="2" Grid.Row="3" Text="col 2- fila 3" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" x:Name="Label14" Grid.Column="2" Grid.Row="4" Text="col 2- fila 4" ZIndex="1"  BackgroundColor="Black" TextColor="WhiteSmoke"/>
+
+
+            <BoxView Color="Red"  HorizontalOptions="Center"  Grid.Row="0" Grid.Column="0" ZIndex="0" />
+            <Ellipse Fill="Green"  HorizontalOptions="Center"  Grid.Row="0" Grid.Column="1" ZIndex="0" />
+            <Image Source="https://aka.ms/campus.jpg" Aspect="AspectFit" HorizontalOptions="Center" Grid.Column="2" Grid.Row="0" />
+
+            <Line X1="200" Y1="0" X2="0" Y2="100" Stroke="Red" HorizontalOptions="Center"  Grid.Column="0" Grid.Row="1" ZIndex="0" />
+            <Line X1="0" Y1="0" X2="200" Y2="100" Stroke="Orange" HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" ZIndex="0" />
+
+            <Path Stroke="Black" Aspect="Fill"
+      HorizontalOptions="Center" HeightRequest="100" WidthRequest="200"
+      Data="M13.9,16.2 L32,16.2 32,31.9 13.9,30.1Z M0,16.2 L11.9,16.2 11.9,29.9 0,28.6Z
+            M11.9,2 L11.9,14.2 0,14.2 0,3.3Z M32,0 L32,14.2 13.9,14.2 13.9,1.8Z" Grid.Row="1" Grid.Column="1"/>
+
+            <Polygon Points="0 100, 0 100, 200 100, 200 100," HeightRequest="100" WidthRequest="200"
+         Fill="Blue"
+         Stroke="Red"
+         StrokeThickness="3"
+         HorizontalOptions="Center" Grid.Row="2" Grid.Column="0" />
+
+
+            <Polyline Points="0,0 10,30, 15,0 18,60 23,30 35,30 40,0
+                  43,60 48,30 100,30"
+          Stroke="Red"
+          HorizontalOptions="Center"  Grid.Row="2" Grid.Column="1"/>
+
+       
+            <WebView Source="https://maurobernal.com.ar"
+         VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" />
+
+        </Grid>
+        
+        -->
+
+    </ScrollView>
+</ContentPage>
