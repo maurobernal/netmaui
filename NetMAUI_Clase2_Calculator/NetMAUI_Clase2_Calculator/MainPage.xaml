@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetMAUI_Clase2_Calculator.MainPage"
+             BackgroundColor="{DynamicResource PrimaryColor}">
+
+    <ScrollView BackgroundColor="DarkGray">
+        <Grid BackgroundColor="White" Padding="2" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Visor -->
+            <BoxView BackgroundColor="Black" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"/>
+            <Label x:Name="Lbl_Visor" FontSize="30" FontAttributes="Bold" Text="0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"
+                   VerticalOptions="Center" HorizontalOptions="End" TextColor="{DynamicResource Teclas}" Padding="0,0,20,0"/>
+
+            <!-- Operaciones Superior -->
+            <Button FontSize="20" x:Name="Btn_Can" Clicked="Btn_Can_Clicked" FontAttributes="Bold" Text="C" Grid.Column="0" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" x:Name="Btn_Inv" Clicked="Btn_Inv_Clicked" FontAttributes="Bold" Text="±" Grid.Column="2" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" x:Name="Btn_Por" FontAttributes="Bold" Text="%" Grid.Column="4" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+
+            <!-- Números -->
+            <Button x:Name="Btn_Num_7" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="7" Grid.Column="0" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_8" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="8" Grid.Column="2" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_9" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="9" Grid.Column="4" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_4" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="4" Grid.Column="0" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_5" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="5" Grid.Column="2" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_6" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="6" Grid.Column="4" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_1" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="1" Grid.Column="0" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_2" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="2" Grid.Column="2" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_3" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="3" Grid.Column="4" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_0" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="0" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Dot" BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="." Grid.Column="4" Grid.Row="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+
+            <!--Operaciones Lateral -->
+            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Div" FontAttributes="Bold" Text="÷" Grid.Column="6" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Mul" FontAttributes="Bold" Text="X" Grid.Column="6" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Res" FontAttributes="Bold" Text="-" Grid.Column="6" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Sum" FontAttributes="Bold" Text="+" Grid.Column="6" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button FontSize="20" Clicked="Resolver" x:Name="Btn_Igu" FontAttributes="Bold" Text="=" Grid.Column="6" Grid.Row="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
