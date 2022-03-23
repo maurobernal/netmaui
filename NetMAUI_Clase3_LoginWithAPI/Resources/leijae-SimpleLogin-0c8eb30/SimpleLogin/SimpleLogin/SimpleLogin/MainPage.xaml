@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:custom="clr-namespace:SimpleLogin;assembly=SimpleLogin"
+             mc:Ignorable="d"
+             x:Class="SimpleLogin.MainPage"
+             Visual="Material"
+             Title="Login">
+
+    <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
+    <ContentPage.Content>
+        <Grid>
+            <AbsoluteLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="20">
+                    <StackLayout Padding="1" BackgroundColor="Transparent" Orientation="Horizontal">
+                        <Grid VerticalOptions="CenterAndExpand"
+              Padding="10"
+              HorizontalOptions="FillAndExpand"
+              BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="25" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="50" Text="SimpleLogin" FontAttributes="Bold" />
+                            <!-- Email Grid -->
+                            <pancakeView:PancakeView Grid.Row="2" HeightRequest="65" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Transparent" CornerRadius="5" BorderThickness="1" BorderColor="White" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           Grid.Column="0"
+                                           Aspect="AspectFill">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeRegular}"
+                                                Glyph="{x:Static custom:FontAwesomeIcons.Envelope}"
+                                                Color="White"
+                                                Size="30" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomEntry BackgroundColor="Transparent"
+                                           TextColor="White"
+                                           PlaceholderColor="White"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Fill"
+                                           Placeholder="Email"
+                                           Text="{Binding LoginModel.Email}"
+                                           Grid.Column="1" />
+                                </Grid>
+                            </pancakeView:PancakeView>
+                            <Label FontAttributes="Bold" IsVisible="False" TextColor="IndianRed" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
+
+                            <pancakeView:PancakeView Grid.Row="4" HeightRequest="65" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Transparent" CornerRadius="5" BorderThickness="1" BorderColor="White" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           Grid.Column="0"
+                                           Aspect="AspectFill">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                                Glyph="{x:Static custom:FontAwesomeIcons.Lock}"
+                                                Color="White"
+                                                Size="30" />
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomEntry BackgroundColor="Transparent"
+                                           TextColor="White"
+                                           PlaceholderColor="White"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Fill"
+                                           Placeholder="Password"
+                                           IsPassword="True"
+                                           
+                                           Text="{Binding LoginModel.Password}"
+                                           Grid.Column="1" />
+                                </Grid>
+                            </pancakeView:PancakeView>
+                            <Label x:Name="PasswordError" IsVisible="False" FontAttributes="Bold" TextColor="IndianRed" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" />
+
+                            <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" >
+                                <Switch OnColor="#7698f3" IsToggled="{Binding LoginModel.RememberMe}" HorizontalOptions="Start" />
+                                <Label TextColor="White" Text="Remember Me" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" />
+                            </StackLayout>
+
+                            <Button TextColor="White" Text="Login" Command="{Binding LoginCommand}" BackgroundColor="#93c393" BorderColor="DarkSeaGreen" BorderWidth="1" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                                <Button.Clicked>Button_OnClicked</Button.Clicked>
+                            </Button>
+
+                            <Label Text="Register"
+                     HorizontalOptions="Start"
+                     TextColor="White"
+                     Grid.Row="8" Grid.Column="0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RegisterCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Label Text="Recover"
+                 HorizontalOptions="End"
+                 TextColor="White"
+                 Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="35" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="35" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                            <BoxView
+              VerticalOptions="Center"
+              WidthRequest="120"
+              HeightRequest="1"
+              BackgroundColor="White"
+              HorizontalOptions="CenterAndExpand" />
+                            <Label Text=" or " TextColor="White" VerticalOptions="CenterAndExpand" />
+                            <BoxView
+              VerticalOptions="Center"
+              WidthRequest="120"
+              HeightRequest="1"
+              BackgroundColor="White"
+              HorizontalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <Label Text="Continue as Guest"
+               HorizontalOptions="Center"
+               TextColor="White"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ContinueCommand}" NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </AbsoluteLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>
