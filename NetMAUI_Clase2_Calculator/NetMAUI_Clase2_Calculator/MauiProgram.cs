@@ -1,4 +1,6 @@
-﻿namespace NetMAUI_Clase2_Calculator;
+﻿using NetMAUI_Clase2_Calculator.ViewModels;
+
+namespace NetMAUI_Clase2_Calculator;
 
 public static class MauiProgram
 {
@@ -11,6 +13,8 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 			});
+
+		
 
 		return builder.Build();
 	}

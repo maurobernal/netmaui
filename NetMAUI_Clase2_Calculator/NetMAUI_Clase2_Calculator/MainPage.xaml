@@ -2,10 +2,23 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NetMAUI_Clase2_Calculator.MainPage"
+             xmlns:local="clr-namespace:NetMAUI_Clase2_Calculator.ViewModels"
              BackgroundColor="{DynamicResource PrimaryColor}">
-
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="TextColor" Value="Red"></Setter>
+            <Setter Property="BackgroundColor" Value="DarkBlue"></Setter>
+        </Style>
+        
+        
+    </ContentPage.Resources>
     <ScrollView BackgroundColor="DarkGray">
         <Grid BackgroundColor="White" Padding="2" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.BindingContext>
+                <local:DecimalKeypadViewModel></local:DecimalKeypadViewModel>
+            </Grid.BindingContext>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="1"/>
@@ -31,33 +44,34 @@
 
             <!--Visor -->
             <BoxView BackgroundColor="Black" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"/>
-            <Label x:Name="Lbl_Visor" FontSize="30" FontAttributes="Bold" Text="0" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"
-                   VerticalOptions="Center" HorizontalOptions="End" TextColor="{DynamicResource Teclas}" Padding="0,0,20,0"/>
+            <Label x:Name="Lbl_Visor" FontSize="30"  Text="{Binding Entry}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7"
+                   VerticalOptions="Center" HorizontalOptions="End"  Padding="0,0,20,0" TextColor="Red"/>
 
             <!-- Operaciones Superior -->
-            <Button FontSize="20" x:Name="Btn_Can" Clicked="Btn_Can_Clicked" FontAttributes="Bold" Text="C" Grid.Column="0" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" x:Name="Btn_Inv" Clicked="Btn_Inv_Clicked" FontAttributes="Bold" Text="±" Grid.Column="2" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" x:Name="Btn_Por" FontAttributes="Bold" Text="%" Grid.Column="4" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button  x:Name="Btn_Cle" Command="{Binding ClearCommand}"  Text="C" Grid.Column="0" Grid.Row="2" />
+            <Button  x:Name="Btn_Inv" Command="{Binding InverterCommand}"   Text="±" Grid.Column="2" Grid.Row="2"  />
+            <Button  x:Name="Btn_Por"  Text="%" Grid.Column="4" Grid.Row="2"  />
 
             <!-- Números -->
-            <Button x:Name="Btn_Num_7" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="7" Grid.Column="0" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_8" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="8" Grid.Column="2" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_9" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="9" Grid.Column="4" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_4" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="4" Grid.Column="0" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_5" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="5" Grid.Column="2" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_6" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="6" Grid.Column="4" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_1" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="1" Grid.Column="0" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_2" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="2" Grid.Column="2" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_3" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="3" Grid.Column="4" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Num_0" Clicked="Btn_Num_Clicked"   BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="0" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button x:Name="Btn_Dot" BackgroundColor="{DynamicResource Fondo_Gris}" FontSize="20" FontAttributes="Bold" Text="." Grid.Column="4" Grid.Row="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button x:Name="Btn_Num_7" Command="{Binding DigitCommand}" CommandParameter="7" Text="7" Grid.Column="0" Grid.Row="4"  />
+            <Button x:Name="Btn_Num_8" Command="{Binding DigitCommand}" CommandParameter="8" Text="8" Grid.Column="2" Grid.Row="4"  />
+            <Button x:Name="Btn_Num_9" Command="{Binding DigitCommand}" CommandParameter="9" Text="9" Grid.Column="4" Grid.Row="4"  />
+            <Button x:Name="Btn_Num_4" Command="{Binding DigitCommand}" CommandParameter="4" Text="4" Grid.Column="0" Grid.Row="6"  />
+            <Button x:Name="Btn_Num_5" Command="{Binding DigitCommand}" CommandParameter="5" Text="5" Grid.Column="2" Grid.Row="6"  />
+            <Button x:Name="Btn_Num_6" Command="{Binding DigitCommand}" CommandParameter="6" Text="6" Grid.Column="4" Grid.Row="6"  />
+            <Button x:Name="Btn_Num_1" Command="{Binding DigitCommand}" CommandParameter="1" Text="1" Grid.Column="0" Grid.Row="8"  />
+            <Button x:Name="Btn_Num_2" Command="{Binding DigitCommand}" CommandParameter="2" Text="2" Grid.Column="2" Grid.Row="8"  />
+            <Button x:Name="Btn_Num_3" Command="{Binding DigitCommand}" CommandParameter="3" Text="3" Grid.Column="4" Grid.Row="8"  />
+            <Button x:Name="Btn_Num_0" Command="{Binding DigitCommand}" CommandParameter="0" Text="0" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="1"  />
+            <Button x:Name="Btn_Dot"   Command="{Binding DigitCommand}" CommandParameter="." Text="." Grid.Column="4" Grid.Row="10"  />
+            <Button x:Name="Btn_Back"  Command="{Binding BackspaceCommand}" Text="&#x21E6;" Grid.Column="0" Grid.Row="10"  />
 
             <!--Operaciones Lateral -->
-            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Div" FontAttributes="Bold" Text="÷" Grid.Column="6" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Mul" FontAttributes="Bold" Text="X" Grid.Column="6" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Res" FontAttributes="Bold" Text="-" Grid.Column="6" Grid.Row="6" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" Clicked="Btn_Operar" x:Name="Btn_Sum" FontAttributes="Bold" Text="+" Grid.Column="6" Grid.Row="8" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
-            <Button FontSize="20" Clicked="Resolver" x:Name="Btn_Igu" FontAttributes="Bold" Text="=" Grid.Column="6" Grid.Row="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource Teclas}"/>
+            <Button  x:Name="Btn_Div" Command="{Binding OperationCommand}" CommandParameter="/"  Text="÷" Grid.Column="6" Grid.Row="2"  />
+            <Button  x:Name="Btn_Mul" Command="{Binding OperationCommand}" CommandParameter="*"  Text="X" Grid.Column="6" Grid.Row="4"  />
+            <Button  x:Name="Btn_Res" Command="{Binding OperationCommand}" CommandParameter="-"  Text="-" Grid.Column="6" Grid.Row="6"  />
+            <Button  x:Name="Btn_Sum" Command="{Binding OperationCommand}" CommandParameter="+"  Text="+" Grid.Column="6" Grid.Row="8"  />
+            <Button  x:Name="Btn_Igu" Command="{Binding OperationCommand}" CommandParameter="="  Text="=" Grid.Column="6" Grid.Row="10"  />
 
         </Grid>
     </ScrollView>
