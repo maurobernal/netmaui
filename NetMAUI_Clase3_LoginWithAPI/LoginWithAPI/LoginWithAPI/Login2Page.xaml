@@ -5,6 +5,6 @@
              Title="Login2Page"
              BackgroundColor="White">
     <ScrollView>
-        <WebView x:Name="WebView_P" Source="https://172.0.0.35/"/>
+        <WebView x:Name="WebView_P" Source="https://maurobernal.com.ar/"/>
     </ScrollView>
 </ContentPage>

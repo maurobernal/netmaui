@@ -94,13 +94,13 @@
 
                         </Button>
 
-                        <Label Text="Register" HorizontalOptions="Start" TextColor="White" Grid.Row="8" Grid.Column="0">
+                        <Label Text="Register" HorizontalOptions="Center" TextColor="White" Grid.Row="8" Grid.Column="0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding RegisterCommand}" NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <Label Text="Recover" HorizontalOptions="End" TextColor="White" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Label Text="Recover" HorizontalOptions="Center" TextColor="White" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
