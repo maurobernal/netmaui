@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetMAUI_Clase5_Bindings.MainPage"
+             xmlns:local="clr-namespace:NetMAUI_Clase5_Bindings.ViewModels"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+    <ScrollView>
+    <StackLayout Padding="10,0">
+            <Grid BackgroundColor="AliceBlue" Margin="10">
+                <Grid.BindingContext>
+                    <local:GeneradorColorViewModel/>
+                </Grid.BindingContext>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/> 
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="20"/>
+
+
+                </Grid.ColumnDefinitions>
+                
+                <Label x:Name="Lbl_Codigo" Margin="10" Text="Codigo"  Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label x:Name="Lbl_Texto" Text="Xaml" Rotation="{Binding Path=Value}"
+               BindingContext="{x:Reference Sld_Posicion}" VerticalOptions="Center" HorizontalOptions="Center"
+                       Grid.Row="0" Grid.Column="2"/>
+
+                <Slider x:Name="Sld_Posicion" VerticalOptions="Start" FlowDirection="RightToLeft"
+                        Maximum="360" Minimum="0" Grid.Row="3" Grid.ColumnSpan="4"/>
+                <Label x:Name="Lbl_Valor" BindingContext="{x:Reference Sld_Posicion}" 
+               Text="{Binding Path=Value}" FontSize="10" Grid.Row="4" HorizontalOptions="Center" Grid.Column="1" Grid.ColumnSpan="2"
+                       />
+
+
+                <Label Grid.Row="5" Text="Hue" HorizontalOptions="End"/>
+                <Slider x:Name="Sld_Hue" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" 
+                        Value="{Binding hue}"
+                        />
+                
+                <Label Grid.Row="6" Text="Sat" HorizontalOptions="End"/>
+                <Slider x:Name="Sld_Sat" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"
+                        Value="{Binding sat}"
+                        />
+                
+                <Label Grid.Row="7" Text="Lum" HorizontalOptions="End"/>
+                <Slider x:Name="Sld_Lum" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" 
+                        Value="{Binding lum}"
+                        />
+
+                <BoxView BackgroundColor="{Binding color}" Grid.Row="8" Grid.ColumnSpan="2" Grid.Column="1"/>
+
+
+
+            </Grid>
+        
+        
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
