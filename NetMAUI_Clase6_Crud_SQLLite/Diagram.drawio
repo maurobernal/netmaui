@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-09-03T14:20:10.668Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70" etag="FAPuPyvDXrfbBNHsPYuM" version="20.2.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-03T14:29:56.161Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70" etag="zQafmCLl9v5VZAdCgbqP" version="20.2.4" type="github">
   <diagram id="NB6mXYDmec099IJfaaXO" name="Página-1">
-    <mxGraphModel dx="1145" dy="693" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1963" dy="1189" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -63,6 +63,23 @@
         </mxCell>
         <mxCell id="c-SrezF3dRg-0r12ovPg-23" value="CRUD con SQL Lite" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="c-SrezF3dRg-0r12ovPg-22">
           <mxGeometry x="10" y="30" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c-SrezF3dRg-0r12ovPg-24" value="&lt;h1&gt;Patrón&lt;/h1&gt;&lt;div&gt;MVVM: Modelo - Vista - VistaModelo&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="370" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c-SrezF3dRg-0r12ovPg-25" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://docs.microsoft.com/en-us/learn/dot-net-maui/store-local-data/media/2-data-storage-options.svg;" vertex="1" parent="1">
+          <mxGeometry x="277.24" y="570" width="482.76" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c-SrezF3dRg-0r12ovPg-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="c-SrezF3dRg-0r12ovPg-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c-SrezF3dRg-0r12ovPg-26" value="SQL Lite" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c-SrezF3dRg-0r12ovPg-28" value="&lt;h1&gt;Packages&lt;/h1&gt;&lt;div&gt;sqlite-net-pcl&lt;br&gt;&lt;/div&gt;&lt;div&gt;CommunityToolkit.Mvvm&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="740" width="190" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
