@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NetMAUI_Clase6_Crud_SQLLite.Views.ListadoAlumnos"
              xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
+             xmlns:mo="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.Models"
              Title="ListadoAlumnos"
              x:DataType="vm:AlumnosViewModels"
              >
@@ -11,13 +12,74 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" Margin="10,10,10,10" />
         <Button Text="Listar" Command="{Binding ListarAlumnosCommand}">
-            
+
         </Button>
-        <CollectionView BindingContext="{Binding Alumnos}"
-            ItemsSource="{Binding}"
-        >
-          
+        <Button Text="Eliminar" Command="{Binding ListarAlumnos2Command}">
+
+        </Button>
+        <BoxView Color="Teal" HeightRequest="100">
             
+    <BoxView.GestureRecognizers>
+
+        <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped">
+              
+                    </SwipeGestureRecognizer>
+        <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
+        <SwipeGestureRecognizer Direction="Up" Swiped="OnSwiped"/>
+        <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped"/>
+    </BoxView.GestureRecognizers>
+</BoxView>
+        <CollectionView BindingContext="{Binding Alumnos}"
+            ItemsSource="{Binding}">
+            <CollectionView.EmptyView>
+                <Label Text="(vacío)"></Label>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="mo:AlumnosModels">
+                    <Frame>
+                        <Frame.GestureRecognizers>
+
+                            <SwipeGestureRecognizer Direction="Left"
+                                                    Command="{Binding EditarAlumnoCommand}" CommandParameter=".">
+                            </SwipeGestureRecognizer>
+                            <SwipeGestureRecognizer
+                                Direction="Right" Command="{Binding EliminarAlumnoCommand}"
+                                CommandParameter=".">
+
+
+
+                            </SwipeGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout>
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItem Text="LEft" >
+                             
+
+                                    </SwipeItem>
+                                    </SwipeView.LeftItems>
+                                <SwipeItemView>
+
+                                    <Label Text="center"/>
+                                </SwipeItemView>
+
+                            </SwipeView>
+                            <Label Text="{Binding Nombre}"></Label>
+                            <Label Text="{Binding Apellido}"></Label>
+                            <Label Text="{Binding Id}"></Label>
+
+                        </VerticalStackLayout>
+
+
+                    </Frame>
+
+                </DataTemplate>
+
+
+
+            </CollectionView.ItemTemplate>
+
+
         </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

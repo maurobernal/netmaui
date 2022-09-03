@@ -22,12 +22,38 @@ public partial class AlumnosViewModels : ObservableObject
         await _alumnosservice.InsertAlumno(new AlumnosModels { Apellido = "Bernal", Nombre = "Mauro" });
 
 
-       var lista= await _alumnosservice.GetAll();
-        foreach (var item in lista)
-        {
-            Alumnos.Add(item);
-        }
+        var lista = await _alumnosservice.GetAll();
+        foreach (var item in lista) Alumnos.Add(item);
 
+
+
+
+    }
+
+
+    [RelayCommand]
+    public async Task ListarAlumnos2()
+    {
+        var A = await _alumnosservice.GetById(1);
+        await _alumnosservice.DeleteAlumno(A);
+
+
+    }
+
+    [RelayCommand]
+    public async Task EliminarAlumno(AlumnosModels Alumno)
+    {
+        var A = await _alumnosservice.GetById(1);
+        await _alumnosservice.DeleteAlumno(A);
+
+
+    }
+
+    [RelayCommand]
+    public async Task EditarAlumno(AlumnosModels Alumno)
+    {
+        var A = await _alumnosservice.GetById(1);
+        await _alumnosservice.DeleteAlumno(A);
 
 
     }
