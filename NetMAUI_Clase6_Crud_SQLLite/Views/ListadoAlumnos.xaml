@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NetMAUI_Clase6_Crud_SQLLite.Views.ListadoAlumnos"
+             xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
+             Title="ListadoAlumnos"
+             x:DataType="vm:AlumnosViewModels"
+             >
+    <VerticalStackLayout Padding="2">
+        <Label FontSize="20" BackgroundColor="Black" TextColor="LightCoral" Padding="2" Text="Listado de Alumnos:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" Margin="10,10,10,10" />
+        <Button Text="Listar" Command="{Binding ListarAlumnosCommand}">
+            
+        </Button>
+        <CollectionView BindingContext="{Binding Alumnos}"
+            ItemsSource="{Binding}"
+        >
+          
+            
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
