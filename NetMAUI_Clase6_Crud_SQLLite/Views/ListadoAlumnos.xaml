@@ -17,61 +17,50 @@
         <Button Text="Eliminar" Command="{Binding ListarAlumnos2Command}">
 
         </Button>
-        <BoxView Color="Teal" HeightRequest="100">
-            
-    <BoxView.GestureRecognizers>
-
-        <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped">
-              
-                    </SwipeGestureRecognizer>
-        <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
-        <SwipeGestureRecognizer Direction="Up" Swiped="OnSwiped"/>
-        <SwipeGestureRecognizer Direction="Down" Swiped="OnSwiped"/>
-    </BoxView.GestureRecognizers>
-</BoxView>
-        <CollectionView BindingContext="{Binding Alumnos}"
+       
+        <CollectionView BindingContext="{Binding Alumnos}" x:Name="collectionView"
             ItemsSource="{Binding}">
             <CollectionView.EmptyView>
                 <Label Text="(vacío)"></Label>
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="mo:AlumnosModels">
-                    <Frame>
-                        <Frame.GestureRecognizers>
-
-                            <SwipeGestureRecognizer Direction="Left"
-                                                    Command="{Binding EditarAlumnoCommand}" CommandParameter=".">
-                            </SwipeGestureRecognizer>
-                            <SwipeGestureRecognizer
-                                Direction="Right" Command="{Binding EliminarAlumnoCommand}"
-                                CommandParameter=".">
-
-
-
-                            </SwipeGestureRecognizer>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout>
-                            <SwipeView>
-                                <SwipeView.LeftItems>
-                                    <SwipeItem Text="LEft" >
-                             
-
-                                    </SwipeItem>
-                                    </SwipeView.LeftItems>
-                                <SwipeItemView>
-
-                                    <Label Text="center"/>
-                                </SwipeItemView>
-
-                            </SwipeView>
-                            <Label Text="{Binding Nombre}"></Label>
-                            <Label Text="{Binding Apellido}"></Label>
-                            <Label Text="{Binding Id}"></Label>
-
-                        </VerticalStackLayout>
-
-
-                    </Frame>
+                <DataTemplate>
+                  <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Favorite"
+                                           IconImageSource="favorite.png"
+                                           BackgroundColor="LightGreen"
+                                           Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EditarAlumnoCommand}"
+                                           />
+                                <SwipeItem Text="Delete"
+                                           IconImageSource="delete.png"
+                                           BackgroundColor="LightPink"
+                                           Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EliminarAlumnoCommand}"
+                                           CommandParameter="{Binding}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid BackgroundColor="White"
+                              Padding="10" x:DataType="mo:AlumnosModels">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                           
+                            <Label Grid.Column="1" 
+                                   Text="{Binding Nombre}" 
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1" 
+                                   Text="{Binding Apellido}"
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="End" />
+                        </Grid>
+                    </SwipeView>
 
                 </DataTemplate>
 

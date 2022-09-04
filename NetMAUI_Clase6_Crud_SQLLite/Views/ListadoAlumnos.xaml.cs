@@ -8,7 +8,5 @@ public partial class ListadoAlumnos : ContentPage
 		BindingContext = viewmodel;
 	}
 
-    void OnSwiped(System.Object sender, Microsoft.Maui.Controls.SwipedEventArgs e)
-    {
-    }
+    
 }

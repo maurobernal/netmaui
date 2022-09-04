@@ -41,7 +41,7 @@ public partial class AlumnosViewModels : ObservableObject
     }
 
     [RelayCommand]
-    public async Task EliminarAlumno(AlumnosModels Alumno)
+     async Task EliminarAlumno(AlumnosModels Alumno)
     {
         var A = await _alumnosservice.GetById(1);
         await _alumnosservice.DeleteAlumno(A);
@@ -50,10 +50,10 @@ public partial class AlumnosViewModels : ObservableObject
     }
 
     [RelayCommand]
-    public async Task EditarAlumno(AlumnosModels Alumno)
+     async Task EditarAlumno()
     {
         var A = await _alumnosservice.GetById(1);
-        await _alumnosservice.DeleteAlumno(A);
+        //await _alumnosservice.DeleteAlumno(A);
 
 
     }
