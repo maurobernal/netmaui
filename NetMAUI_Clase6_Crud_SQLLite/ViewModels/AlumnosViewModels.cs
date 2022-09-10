@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using NetMAUI_Clase6_Crud_SQLLite.Interfaces;
-using System.Collections.ObjectModel;
+﻿
 
 namespace NetMAUI_Clase6_Crud_SQLLite.ViewModels;
 public partial class AlumnosViewModels : ObservableObject

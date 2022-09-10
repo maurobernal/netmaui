@@ -26,13 +26,15 @@ public static class MauiProgram
 
         //Registar Views
         builder.Services.AddSingleton<ListadoAlumnos>();
+        builder.Services.AddSingleton<Alumno>();
 
-		//Registrar ViewModels
-		builder.Services.AddSingleton<AlumnosViewModels>();
+        //Registrar ViewModels
+        builder.Services.AddSingleton<AlumnosViewModels>();
+        builder.Services.AddSingleton<AlumnoViewModels>();
 
 
-		//Registrar Interfaces - Services
-		builder.Services.AddTransient<IAlumnos, AlumnosServices>();
+        //Registrar Interfaces - Services
+        builder.Services.AddTransient<IAlumnos, AlumnosServices>();
 
 		return builder.Build();
 	}
