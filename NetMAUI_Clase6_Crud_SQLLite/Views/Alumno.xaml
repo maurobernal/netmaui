@@ -7,9 +7,18 @@
              Title="Alumno">
     <VerticalStackLayout>
       <Label Text="Nombre:"/>
-      <Entry Text="{Binding Alumno.Nombre}"/>
+      <Entry Text="{Binding Nombre}"/>
         <Label Text="Apellido:"/>
-      <Entry Text="{Binding Alumno.Nombre}"/>
+      <Entry Text="{Binding Apellido}"/>
       <Button Text="Guardar" Command="{Binding GuardarAlumnoCommand}"/>
+
+         <CollectionView ItemsSource="{Binding Errores}">
+
+
+        </CollectionView>
+
     </VerticalStackLayout>
+    
+       
+    
 </ContentPage>
