@@ -10,9 +10,27 @@ public partial class AlumnoViewModels : ObservableValidator
 
     
     public ObservableCollection<string> Errores { get; set; }=new();
+    
+    [ObservableProperty]
+    private string resultado;
 
- 
+    [ObservableProperty]
+   
+    private bool isBusy;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsEnabled))]
+    private bool isVisible;
+     public bool IsEnabled =>!IsVisible;
+
+    [ObservableProperty]
+    private int id;
+
+
+
+
     private string apellido;
+    
 
     [Required]
     [MaxLength(30)]
@@ -22,9 +40,7 @@ public partial class AlumnoViewModels : ObservableValidator
         set => SetProperty(ref apellido, value, true);
     }
 
-    [Required]
-    [Range(0, 600000)]
-    private int id;
+
 
 
    
@@ -35,7 +51,7 @@ public partial class AlumnoViewModels : ObservableValidator
     public string Nombre
     {
         get => nombre;
-        set => SetProperty(ref apellido, value, true);
+        set => SetProperty(ref nombre, value, true);
     }
 
 
@@ -44,13 +60,28 @@ public partial class AlumnoViewModels : ObservableValidator
 
 
     [RelayCommand]
-    public async Task<string> GuardarAlumno(AlumnosModels A)
+    public async Task GuardarAlumno(AlumnosModels A)
     {
+        IsBusy = true;
+        IsVisible = false;
         ValidateAllProperties();
-       
+
+        Errores.Clear();
         GetErrors(nameof(Nombre)).ToList().ForEach(f=> Errores.Add("Nombre:"+f.ErrorMessage));
         GetErrors(nameof(Apellido)).ToList().ForEach(f => Errores.Add("Apellido:"+f.ErrorMessage));
-        return await Task.FromResult<string>("");
+        IsBusy = false;
+        if (Errores.Count > 0) return;
+
+
+        IsBusy = true;
+       Id=await alumno_service.InsertAlumno(new AlumnosModels() { Nombre = Nombre, Apellido = Apellido });
+
+        Resultado = $" Se ha generado el registro {Id}";
+        IsBusy = false;
+        IsVisible = true;
+
+
+
     }
 
 }

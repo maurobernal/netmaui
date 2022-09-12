@@ -5,11 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:NetMAUI_Clase6_Crud_SQLLite"
     xmlns:v="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate v:Alumno}"
+        Title="Listar"
+        ContentTemplate="{DataTemplate v:ListadoAlumnos}"
         Route="ListadoAlumnos" />
+
+    <ShellContent
+        Title="Nuevo alumno"
+        ContentTemplate="{DataTemplate v:Alumno}"
+        Route="Alumno" />
+
 
 </Shell>

@@ -17,7 +17,7 @@ public partial class AlumnosViewModels : ObservableObject
     {
         Alumnos.Clear();
         //Conexión base de datos
-        await _alumnosservice.InsertAlumno(new AlumnosModels { Apellido = "Bernal", Nombre = "Mauro" });
+        //await _alumnosservice.InsertAlumno(new AlumnosModels { Apellido = "Bernal", Nombre = "Mauro" });
 
 
         var lista = await _alumnosservice.GetAll();

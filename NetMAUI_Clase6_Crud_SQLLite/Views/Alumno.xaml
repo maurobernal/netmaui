@@ -5,20 +5,33 @@
              xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
              x:DataType="vm:AlumnoViewModels"
              Title="Alumno">
-    <VerticalStackLayout>
-      <Label Text="Nombre:"/>
-      <Entry Text="{Binding Nombre}"/>
-        <Label Text="Apellido:"/>
-      <Entry Text="{Binding Apellido}"/>
-      <Button Text="Guardar" Command="{Binding GuardarAlumnoCommand}"/>
+    <VerticalStackLayout Padding="10">
+        <VerticalStackLayout Padding="20">
+            <Label Text="Nombre:"/>
+            <Entry Text="{Binding Nombre}"/>
+            <Label Text="Apellido:"/>
+            <Entry Text="{Binding Apellido}"/>
+            <CollectionView ItemsSource="{Binding Errores}" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,20">
+           
+            <Button Text="Guardar" Command="{Binding GuardarAlumnoCommand}"
+                    IsEnabled="{Binding IsEnabled}" IsVisible="{Binding IsEnabled}"
+                    />
+         
+            <ActivityIndicator 
+                IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
-         <CollectionView ItemsSource="{Binding Errores}">
+            <Frame BackgroundColor="Green" IsVisible="{Binding IsVisible}" >
+                <Label FontSize="Title" TextColor="White" HorizontalTextAlignment="Center"  
+                       Text="{Binding Resultado}"/>
+            </Frame>
+            
+        </VerticalStackLayout>
 
-
-        </CollectionView>
 
     </VerticalStackLayout>
-    
-       
-    
+
+
+
 </ContentPage>

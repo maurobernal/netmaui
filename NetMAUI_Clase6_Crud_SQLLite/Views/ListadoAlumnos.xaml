@@ -7,6 +7,7 @@
              Title="ListadoAlumnos"
              x:DataType="vm:AlumnosViewModels"
              >
+    <ScrollView>
     <VerticalStackLayout Padding="2">
         <Label FontSize="20" BackgroundColor="Black" TextColor="LightCoral" Padding="2" Text="Listado de Alumnos:"
             VerticalOptions="Center" 
@@ -50,8 +51,11 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                           
-                            <Label Grid.Column="1" 
+
+                                <Label Grid.Column="0" 
+                                   Text="{Binding Id}"  
+                                   FontAttributes="Bold" />
+                                <Label Grid.Column="1" 
                                    Text="{Binding Nombre}" 
                                    FontAttributes="Bold" />
                             <Label Grid.Row="1"
@@ -71,4 +75,5 @@
 
         </CollectionView>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
