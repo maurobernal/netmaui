@@ -5,36 +5,54 @@
              xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
              xmlns:mo="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.Models"
              Title="ListadoAlumnos"
-             x:DataType="vm:AlumnosViewModels"
-             >
-    <ScrollView>
-    <VerticalStackLayout Padding="2">
-        <Label FontSize="20" BackgroundColor="Black" TextColor="LightCoral" Padding="2" Text="Listado de Alumnos:"
+             x:DataType="vm:AlumnosViewModels">
+    <VerticalStackLayout>
+   
+          
+        <Label Text="Listado de Alumnos:"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" Margin="10,10,10,10" />
+            HorizontalOptions="Center" />
         <Button Text="Listar" Command="{Binding ListarAlumnosCommand}">
 
         </Button>
-        <Button Text="Eliminar" Command="{Binding ListarAlumnos2Command}">
-
-        </Button>
+      
        
         <CollectionView BindingContext="{Binding Alumnos}" x:Name="collectionView"
             ItemsSource="{Binding}">
-            <CollectionView.EmptyView>
-                <Label Text="(vacío)"></Label>
-            </CollectionView.EmptyView>
+                <CollectionView.GestureRecognizers>
+                    <TapGestureRecognizer  Command="{Binding EliminarAlumnoCommand}"
+                                                      CommandParameter=".">
+
+                    </TapGestureRecognizer>
+                </CollectionView.GestureRecognizers>
+      
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+                    
+                        <Frame BackgroundColor="Aqua" Padding="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                      Command="{Binding EliminarAlumnoCommand}"
+                                                      CommandParameter=".">
+                                    
+                                
+                            </TapGestureRecognizer>
+                          
+                        </Frame.GestureRecognizers>
+                        <Label Text="Text" BackgroundColor="Beige"/>
+                        
+
+                        </Frame>
+            <!--
                   <SwipeView>
                         <SwipeView.LeftItems>
                             <SwipeItems>
-                                <SwipeItem Text="Favorite"
+                                <SwipeItem Text="Editar"
                                            IconImageSource="favorite.png"
                                            BackgroundColor="LightGreen"
                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EditarAlumnoCommand}"
                                            />
-                                <SwipeItem Text="Delete"
+                                <SwipeItem Text="Eliminar"
                                            IconImageSource="delete.png"
                                            BackgroundColor="LightPink"
                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EliminarAlumnoCommand}"
@@ -65,15 +83,18 @@
                                    VerticalOptions="End" />
                         </Grid>
                     </SwipeView>
+                  -->
+                        
 
-                </DataTemplate>
+
+                    </DataTemplate>
 
 
 
             </CollectionView.ItemTemplate>
+            
 
+            </CollectionView>
 
-        </CollectionView>
     </VerticalStackLayout>
-    </ScrollView>
 </ContentPage>

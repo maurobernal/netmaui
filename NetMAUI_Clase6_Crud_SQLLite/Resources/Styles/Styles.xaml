@@ -104,6 +104,7 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="LightGrey" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="Margin" Value="2"/>
         <Setter Property="FontSize" Value="14" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
         <Setter Property="VisualStateManager.VisualStateGroups">

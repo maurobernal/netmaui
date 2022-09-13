@@ -6,19 +6,32 @@
              x:DataType="vm:AlumnoViewModels"
              Title="Alumno">
     <VerticalStackLayout Padding="10">
-        <VerticalStackLayout Padding="20">
-            <Label Text="Nombre:"/>
-            <Entry Text="{Binding Nombre}"/>
-            <Label Text="Apellido:"/>
-            <Entry Text="{Binding Apellido}"/>
-            <CollectionView ItemsSource="{Binding Errores}" />
-        </VerticalStackLayout>
+        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto"
+              ColumnDefinitions="150,50,*">
+            <Label Text="Nombre:" Grid.Row="0" Grid.Column="0"/>
+            <Entry Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="Apellido:" Grid.Row="2" />
+            <Entry Text="{Binding Apellido}" Grid.Row="3"/>
+            <CollectionView 
+                Margin="0,10"
+                BackgroundColor="LightCoral" ItemsSource="{Binding Errores}"
+                            Grid.Row="4" Grid.Column="0"  
+                            Grid.ColumnSpan="3">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label TextColor="White" Padding="5" Text="{Binding .}"></Label>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
         <VerticalStackLayout Margin="0,20">
-           
+
             <Button Text="Guardar" Command="{Binding GuardarAlumnoCommand}"
                     IsEnabled="{Binding IsEnabled}" IsVisible="{Binding IsEnabled}"
                     />
-         
+
             <ActivityIndicator 
                 IsVisible="{Binding IsBusy}" IsEnabled="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
 
@@ -26,7 +39,7 @@
                 <Label FontSize="Title" TextColor="White" HorizontalTextAlignment="Center"  
                        Text="{Binding Resultado}"/>
             </Frame>
-            
+
         </VerticalStackLayout>
 
 

@@ -29,19 +29,12 @@ public partial class AlumnosViewModels : ObservableObject
     }
 
 
-    [RelayCommand]
-    public async Task ListarAlumnos2()
-    {
-        var A = await _alumnosservice.GetById(1);
-        await _alumnosservice.DeleteAlumno(A);
-
-
-    }
+   
 
     [RelayCommand]
      async Task EliminarAlumno(AlumnosModels Alumno)
     {
-        var A = await _alumnosservice.GetById(1);
+        var A = await _alumnosservice.GetById(Alumno.Id);
         await _alumnosservice.DeleteAlumno(A);
 
 

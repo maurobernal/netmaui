@@ -32,7 +32,7 @@ public partial class AlumnoViewModels : ObservableValidator
     private string apellido;
     
 
-    [Required]
+    [Required(ErrorMessage ="El campo apellido es obligatorio")]
     [MaxLength(30)]
     public string Apellido
     {
@@ -46,7 +46,7 @@ public partial class AlumnoViewModels : ObservableValidator
    
     private string nombre;
 
-    [Required]
+    [Required(ErrorMessage = "El campo nombre es obligatorio")]
     [MaxLength(30)]
     public string Nombre
     {
