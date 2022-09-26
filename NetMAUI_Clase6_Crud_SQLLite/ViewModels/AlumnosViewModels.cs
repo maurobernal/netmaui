@@ -5,9 +5,10 @@ public partial class AlumnosViewModels : ObservableObject
 {
     private readonly IAlumnos _alumnosservice;
 
-    public AlumnosViewModels(IAlumnos alumnos)
+    public AlumnosViewModels()
     {
-        _alumnosservice = alumnos;
+        _alumnosservice = App.Current.Services.GetService<IAlumnos>();
+        
     }
     public ObservableCollection<AlumnosModels> Alumnos { get; set; } = new();
 
@@ -16,39 +17,31 @@ public partial class AlumnosViewModels : ObservableObject
     public async Task ListarAlumnos()
     {
         Alumnos.Clear();
-        //Conexión base de datos
-        //await _alumnosservice.InsertAlumno(new AlumnosModels { Apellido = "Bernal", Nombre = "Mauro" });
-
-
         var lista = await _alumnosservice.GetAll();
         foreach (var item in lista) Alumnos.Add(item);
-
-
-
-
     }
 
 
-   
-
     [RelayCommand]
-     async Task EliminarAlumno(AlumnosModels Alumno)
-    {
-        var A = await _alumnosservice.GetById(Alumno.Id);
-        await _alumnosservice.DeleteAlumno(A);
-
-
-    }
-
-    [RelayCommand]
-     async Task EditarAlumno()
+     public async Task EditarAlumno(AlumnosModels alumno)
     {
         var A = await _alumnosservice.GetById(1);
         //await _alumnosservice.DeleteAlumno(A);
+    }
 
+    [RelayCommand]
+    public async Task EliminarAlumno( AlumnosModels alumno)
+    {
+        var A = await _alumnosservice.DeleteAlumno(alumno);
+        await ListarAlumnos();
 
     }
 
+    [RelayCommand]
+    public async Task AddNew()
+    {
+        await Shell.Current.Navigation.PushAsync(new Alumno(), false);
+    }
 
 
 }

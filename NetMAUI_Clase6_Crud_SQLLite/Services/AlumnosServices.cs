@@ -23,7 +23,8 @@ public class AlumnosServices : IAlumnos
     => Task.FromResult(db.Get(id));
 
     public Task<int> InsertAlumno(AlumnosModels A)
-    => Task.FromResult(db.Add(A));
+   => Task.FromResult(db.Add(A));
+    
 
     public Task<int> UpdateAlumno(AlumnosModels A)
     => Task.FromResult(db.Update(A));

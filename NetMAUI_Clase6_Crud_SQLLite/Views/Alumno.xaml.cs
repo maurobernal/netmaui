@@ -2,9 +2,9 @@
 
 public partial class Alumno : ContentPage
 {
-	public Alumno(AlumnoViewModels vm)
+	public Alumno()
 	{
-		BindingContext = vm;
+		BindingContext = App.Current.Services.GetService<AlumnoViewModels>();
 		InitializeComponent();
 	}
 }

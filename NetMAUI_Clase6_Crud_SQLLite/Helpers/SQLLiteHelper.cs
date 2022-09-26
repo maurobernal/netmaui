@@ -9,7 +9,10 @@ public class SQLLiteHelper<T> : SQLLiteBase
     => _connection.Table<T>().ToList();
 
     public int Add(T row)
-    => _connection.Insert(row);
+    {
+        _connection.Insert(row);
+        return row.Id;
+    }
 
     public int Update(T row)
 => _connection.Update(row);

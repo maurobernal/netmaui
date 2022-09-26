@@ -2,10 +2,10 @@ namespace NetMAUI_Clase6_Crud_SQLLite.Views;
 
 public partial class ListadoAlumnos : ContentPage
 {
-	public ListadoAlumnos(AlumnosViewModels viewmodel)
+	public ListadoAlumnos()
 	{
 		InitializeComponent();
-		BindingContext = viewmodel;
+		BindingContext = App.Current.Services.GetService<AlumnosViewModels>();
 	}
 
     

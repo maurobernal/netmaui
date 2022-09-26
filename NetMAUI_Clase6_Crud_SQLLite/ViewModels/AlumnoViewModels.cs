@@ -55,8 +55,8 @@ public partial class AlumnoViewModels : ObservableValidator
     }
 
 
-    public AlumnoViewModels(IAlumnos alumno_service)
-   => this.alumno_service = alumno_service;
+    public AlumnoViewModels()
+   => this.alumno_service = App.Current.Services.GetService<IAlumnos>();
 
 
     [RelayCommand]
