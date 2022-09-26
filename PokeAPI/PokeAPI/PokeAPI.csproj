@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>PokeAPI</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>PokeAPI</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.pokeapi</ApplicationId>
+		<ApplicationIdGuid>A91264FC-D06D-4EF0-8367-DE6451B65C3C</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#D9D9D8" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <GoogleServicesJson Include="google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+	  <PackageReference Include="Google.Apis.FirebaseCloudMessaging.v1" Version="1.57.0.2622" />
+	  <PackageReference Include="IdentityModel.OidcClient" Version="5.0.2" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+	  <PackageReference Include="Refit" Version="6.3.2" />
+	  <PackageReference Include="Shiny.Core" Version="3.0.0-alpha-0283" />
+	  <PackageReference Include="Shiny.Push.FirebaseMessaging" Version="3.0.0-alpha-0002" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="View\NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PokeDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+	  <PackageReference Include="Xamarin.AndroidX.Core">
+	    <Version>1.8.0.1</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportBackendCct">
+	    <Version>3.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.Google.Android.DataTransport.TransportRuntime">
+	    <Version>3.1.7</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.GooglePlayServices.Base">
+	    <Version>118.1.0</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+	    <Version>118.0.2</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionPokeAPIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
+</Project>

@@ -6,5 +6,6 @@ public partial class Alumno : ContentPage
 	{
 		BindingContext = App.Current.Services.GetService<AlumnoViewModels>();
 		InitializeComponent();
+
 	}
 }

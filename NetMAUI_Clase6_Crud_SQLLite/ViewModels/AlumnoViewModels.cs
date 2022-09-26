@@ -4,6 +4,9 @@ using MaxLengthAttribute = System.ComponentModel.DataAnnotations.MaxLengthAttrib
 
 namespace NetMAUI_Clase6_Crud_SQLLite.ViewModels;
 
+[QueryProperty("Nombre","Nombre")]
+[QueryProperty("Apellido", "Apellido")]
+[QueryProperty("Id", "Id")]
 public partial class AlumnoViewModels : ObservableValidator
 {
     private readonly IAlumnos alumno_service;
@@ -15,23 +18,17 @@ public partial class AlumnoViewModels : ObservableValidator
     private string resultado;
 
     [ObservableProperty]
-   
     private bool isBusy;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsEnabled))]
     private bool isVisible;
-     public bool IsEnabled =>!IsVisible;
+    public bool IsEnabled =>!IsVisible;
 
     [ObservableProperty]
     private int id;
 
-
-
-
     private string apellido;
-    
-
     [Required(ErrorMessage ="El campo apellido es obligatorio")]
     [MaxLength(30)]
     public string Apellido
@@ -41,11 +38,7 @@ public partial class AlumnoViewModels : ObservableValidator
     }
 
 
-
-
-   
     private string nombre;
-
     [Required(ErrorMessage = "El campo nombre es obligatorio")]
     [MaxLength(30)]
     public string Nombre
@@ -54,9 +47,12 @@ public partial class AlumnoViewModels : ObservableValidator
         set => SetProperty(ref nombre, value, true);
     }
 
+   
+
 
     public AlumnoViewModels()
-   => this.alumno_service = App.Current.Services.GetService<IAlumnos>();
+    => this.alumno_service = App.Current.Services.GetService<IAlumnos>();
+
 
 
     [RelayCommand]
@@ -67,22 +63,26 @@ public partial class AlumnoViewModels : ObservableValidator
         ValidateAllProperties();
 
         Errores.Clear();
-        GetErrors(nameof(Nombre)).ToList().ForEach(f=> Errores.Add("Nombre:"+f.ErrorMessage));
-        GetErrors(nameof(Apellido)).ToList().ForEach(f => Errores.Add("Apellido:"+f.ErrorMessage));
+        GetErrors(nameof(Nombre)).ToList().ForEach(f => Errores.Add("Nombre:" + f.ErrorMessage));
+        GetErrors(nameof(Apellido)).ToList().ForEach(f => Errores.Add("Apellido:" + f.ErrorMessage));
         IsBusy = false;
         if (Errores.Count > 0) return;
 
 
         IsBusy = true;
-       Id=await alumno_service.InsertAlumno(new AlumnosModels() { Nombre = Nombre, Apellido = Apellido });
+        if (Id==0) Id = await alumno_service.InsertAlumno(new AlumnosModels() { Nombre = Nombre, Apellido = Apellido });
+        if(Id>0) await alumno_service.UpdateAlumno(new AlumnosModels() { Nombre = Nombre, Apellido = Apellido, Id=Id });
 
-        Resultado = $" Se ha generado el registro {Id}";
+        Resultado = $" Registro id:{Id}";
         IsBusy = false;
         IsVisible = true;
 
-
+        await Task.Delay(2000);
+        await Shell.Current.Navigation.PopToRootAsync();
 
     }
+
+
 
 }
 

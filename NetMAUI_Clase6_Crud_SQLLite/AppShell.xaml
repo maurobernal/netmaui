@@ -8,13 +8,13 @@
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="Nuevo alumno"
-        ContentTemplate="{DataTemplate v:Alumno}"
-        Route="Alumno" />
-    <ShellContent
         Title="Listar"
         ContentTemplate="{DataTemplate v:ListadoAlumnos}"
         Route="ListadoAlumnos" />
+    <ShellContent
+        Title="Nuevo alumno"
+        ContentTemplate="{DataTemplate v:Alumno}"
+        Route="Alumno" />
 
 
 

@@ -23,8 +23,8 @@ public partial class App : Application
         services.AddTransient<IAlumnos, AlumnosServices>();
 
         //ViewModels
-        services.AddSingleton<AlumnosViewModels>();
-        services.AddSingleton<AlumnoViewModels>();
+        services.AddTransient<AlumnosViewModels>();
+        services.AddTransient<AlumnoViewModels>();
 
         //Views
         services.AddSingleton<ListadoAlumnos>();
@@ -32,6 +32,7 @@ public partial class App : Application
 
         //Services
         services.AddTransient<IAlumnos, AlumnosServices>();
+        services.AddTransient<IDialogService, DialogService>();
 
 
         return services.BuildServiceProvider();

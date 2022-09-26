@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokeAPI.View.NewPage1"
+             Title="NewPage1" 
+             Shell.FlyoutBehavior="Flyout"
+             FlyoutItem.IsVisible="True"
+             >
+    <Grid ColumnDefinitions="50,300,50" RowDefinitions="20,200,*">
+   
+            <Button Text="Login" Grid.Column="1" Grid.Row="1"
+                    BackgroundColor="MediumPurple"
+                    Margin="32,0"
+                    TextColor="White" Clicked="Button_Clicked_1"
+                    />
+
+        <Label   x:Name="msgText" />
+
+
+    </Grid>
+</ContentPage>

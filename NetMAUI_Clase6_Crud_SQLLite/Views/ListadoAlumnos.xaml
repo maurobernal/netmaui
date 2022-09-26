@@ -6,26 +6,44 @@
     xmlns:mo="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.Models"
     xmlns:te="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.Views.Templates"
     xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
-    Title="ListadoAlumnos"
+    Title="Listado de alumnos"
     x:DataType="vm:AlumnosViewModels">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Listado de Alumnos:"
-            VerticalOptions="Center" />
-        <HorizontalStackLayout>
-            <ImageButton Command="{Binding ListarAlumnosCommand}" Source="list.png" />
-            <ImageButton Command="{Binding AddNewCommand}" Source="addnew.png" />
+    <Grid RowDefinitions="100,*,50">
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <ImageButton
+                Padding="0,10,0,0"
+                Command="{Binding ListarAlumnosCommand}"
+                IsVisible="{Binding IsReady}"
+                Source="list.png" />
+            <ImageButton
+                Padding="0,10,0,0"
+                Command="{Binding AddNewCommand}"
+                Source="addnew.png" />
         </HorizontalStackLayout>
-        <CollectionView
-            x:Name="collectionView"
-            BindingContext="{Binding Alumnos}"
-            ItemsSource="{Binding}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <te:ItemsAlumnos />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+        <Frame
+            Grid.Row="1"
+            Margin="10"
+            Background="{StaticResource Gray100}"
+            HorizontalOptions="Center">
+            <RefreshView Command="{Binding ListarAlumnosCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                    x:Name="collectionView"
+                    BindingContext="{Binding Alumnos}"
+                    ItemsSource="{Binding}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <te:ItemsAlumnos />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <Label BackgroundColor="Azure" Text="Sin datos para mostrar" />
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </RefreshView>
+        </Frame>
+
+    </Grid>
+
+
+
 </ContentPage>

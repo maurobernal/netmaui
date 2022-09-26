@@ -22,6 +22,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -39,7 +40,7 @@
         <HorizontalStackLayout Grid.Column="1">
             <Label Style="{StaticResource Registro}" Text="{Binding Nombre}" />
             <Label Style="{StaticResource Registro}" Text="{Binding Apellido}" />
-        </HorizontalStackLayout>        
+        </HorizontalStackLayout>
         <HorizontalStackLayout
             Grid.Column="2"
             x:DataType="vm:AlumnosViewModels"
@@ -56,9 +57,12 @@
                 WidthRequest="40" />
 
         </HorizontalStackLayout>
+        <BoxView
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            BackgroundColor="LightGray"
+            HeightRequest="1" />
 
     </Grid>
-
-
 
 </ContentView>

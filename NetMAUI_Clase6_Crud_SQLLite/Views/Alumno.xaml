@@ -6,44 +6,47 @@
     xmlns:vm="clr-namespace:NetMAUI_Clase6_Crud_SQLLite.ViewModels"
     Title="Alumno"
     x:DataType="vm:AlumnoViewModels">
-    <VerticalStackLayout Padding="10">
-        <Grid ColumnDefinitions="150,50,*" RowDefinitions="auto,auto,auto,auto,auto,auto">
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="Nombre:" />
-            <Entry
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="{Binding Nombre}" />
-            <Label Grid.Row="2" Text="Apellido:" />
-            <Entry Grid.Row="3" Text="{Binding Apellido}" />
-            <CollectionView
-                Grid.Row="4"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Margin="0,10"
-                BackgroundColor="LightCoral"
-                ItemsSource="{Binding Errores}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label
-                            Padding="5"
-                            Text="{Binding .}"
-                            TextColor="White" />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+    <VerticalStackLayout
+        Padding="0,10,0,0"
+        HorizontalOptions="Center"
+        WidthRequest="200">
 
-            </CollectionView>
-        </Grid>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Nombre:" />
+        <Entry
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="{Binding Nombre}" />
+        <Label Grid.Row="2" Text="Apellido:" />
+        <Entry Grid.Row="3" Text="{Binding Apellido}" />
+        <CollectionView
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,10"
+            BackgroundColor="LightCoral"
+            ItemsSource="{Binding Errores}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        Padding="5"
+                        LineBreakMode="WordWrap"
+                        MinimumWidthRequest="190"
+                        Text="{Binding .}"
+                        TextColor="White" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
-        <VerticalStackLayout Margin="0,20">
+        </CollectionView>
 
-            <Button
+        <VerticalStackLayout HorizontalOptions="Center">
+            <ImageButton
                 Command="{Binding GuardarAlumnoCommand}"
                 IsEnabled="{Binding IsEnabled}"
                 IsVisible="{Binding IsEnabled}"
-                Text="Guardar" />
+                Source="save.png" />
 
             <ActivityIndicator
                 IsEnabled="{Binding IsBusy}"
