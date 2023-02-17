@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "140683118974",
+    "project_id": "demopush-40f50",
+    "storage_bucket": "demopush-40f50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140683118974:android:32fc0ec6b032bcc9078b2f",
+        "android_client_info": {
+          "package_name": "ar.com.maurobernal.demopush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140683118974-5s4mim6hjjj3vc7loc6pgu347lkmirel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVE-Cc18lu9Nue1b9FgIKFK4zqcmMSdEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140683118974-5s4mim6hjjj3vc7loc6pgu347lkmirel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
